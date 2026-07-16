@@ -1,17 +1,3 @@
-"""
-Event ingestion for mini-siem.
-
-Reads JSON-lines log events, either from a static file (batch/demo mode)
-or by tailing a file as it grows (like a real log forwarder would). Each
-event is expected to look like:
-
-    {"ts": 1721040000, "event_type": "auth_failure", "src_ip": "10.0.0.5", "user": "root"}
-
-Extend this to parse real log formats (syslog, auth.log, Windows Event
-Log XML, CloudTrail JSON, etc.) and normalize them into this event shape —
-that normalization step is most of what real SIEM ingest pipelines do.
-"""
-
 import json
 import time
 from typing import Generator, Dict, Any
