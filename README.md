@@ -1,4 +1,4 @@
-# mini-siem
+# mini-siem (in development)
 
 A minimal detection/correlation engine modeled on the rule format used by
 real SIEMs: **Sigma** (the open, vendor-neutral rule standard adopted by
