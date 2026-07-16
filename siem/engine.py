@@ -1,17 +1,3 @@
-"""
-mini-siem correlation engine.
-
-Mimics the detection-rule model used by Elastic Security / Splunk ES /
-Microsoft Sentinel, all of which have converged on something close to the
-open Sigma rule format: declarative YAML rules matched against a stream of
-structured log events, with optional time-windowed correlation
-(e.g. "5 failed logins then 1 success, same source, within 60s").
-
-This is a STARTING POINT. Real SIEM correlation engines index events for
-fast lookback queries and support much richer rule grammars. See README
-for extension ideas.
-"""
-
 from __future__ import annotations
 
 import json
@@ -118,13 +104,13 @@ class DetectionEngine:
                 continue
 
             if rule.threshold:
-                # Correlation rule: only alert once the group hits threshold
+                #correlation rule: only alert once the group hits threshold
                 group_key = str(event.get(rule.group_by, "unknown")) if rule.group_by else "global"
                 window = self.windows[rule.id]
                 if window.record(group_key, ts):
                     alerts.append(self._build_alert(rule, event, group_key))
             else:
-                # Simple single-event rule
+                #simple single-event rule
                 alerts.append(self._build_alert(rule, event, None))
 
         return alerts
