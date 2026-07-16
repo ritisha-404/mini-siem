@@ -1,0 +1,33 @@
+# mini-siem detection rules
+# Format is a simplified subset of Sigma (https://github.com/SigmaHQ/sigma).
+#
+# Each rule:
+#   - detection: field-match "selection" block. Supports plain equality and
+#     the field|contains: value convention.
+#   - threshold + window_seconds + group_by: makes this a correlation rule
+#     that only fires once N matching events occur for the same group_key
+#     within the time window. Omit these three for a simple single-event rule.
+
+- id: T1110-brute-force-auth
+  title: "Repeated authentication failures from a single source"
+  severity: high
+  detection:
+    event_type: auth_failure
+  group_by: src_ip
+  window_seconds: 60
+  threshold: 5
+
+- id: T1078-suspicious-user-agent
+  title: "Known scanner user-agent in web log"
+  severity: medium
+  detection:
+    event_type: http_request
+    user_agent|contains: "sqlmap"
+
+- id: T1548-sudo-to-root-from-nonstandard-shell
+  title: "sudo invoked from an unusual shell"
+  severity: low
+  detection:
+    event_type: process_start
+    process_name: sudo
+    parent_process|contains: "/tmp/"

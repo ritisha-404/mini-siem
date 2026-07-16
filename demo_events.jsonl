@@ -1,0 +1,7 @@
+{"ts": 1721040000, "event_type": "auth_failure", "src_ip": "203.0.113.5", "user": "root"}
+{"ts": 1721040005, "event_type": "auth_failure", "src_ip": "203.0.113.5", "user": "root"}
+{"ts": 1721040010, "event_type": "auth_failure", "src_ip": "203.0.113.5", "user": "admin"}
+{"ts": 1721040015, "event_type": "auth_failure", "src_ip": "203.0.113.5", "user": "admin"}
+{"ts": 1721040020, "event_type": "auth_failure", "src_ip": "203.0.113.5", "user": "root"}
+{"ts": 1721040025, "event_type": "http_request", "user_agent": "sqlmap/1.7", "path": "/login.php"}
+{"ts": 1721040030, "event_type": "process_start", "process_name": "sudo", "parent_process": "/tmp/.hidden/launcher"}
