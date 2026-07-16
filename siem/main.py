@@ -1,11 +1,3 @@
-"""
-mini-siem entry point.
-
-Usage:
-    python -m siem.main --rules rules/brute_force.yml --events demo_events.jsonl
-    python -m siem.main --rules rules/brute_force.yml --tail live_events.jsonl
-"""
-
 import argparse
 import json
 import sys
